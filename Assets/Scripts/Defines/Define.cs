@@ -18,10 +18,20 @@ namespace Define
 			{
 				get 
 				{
-					if (instance == null) instance = new T();
+					if (instance == null)
+                    {
+                        Init();
+                        instance = new T();
+                    }
 					return instance;
 				}
 			}
+
+            public virtual void Init()
+            {
+
+            }
+
 			public void Release()
 			{
 				instance = default(T);
