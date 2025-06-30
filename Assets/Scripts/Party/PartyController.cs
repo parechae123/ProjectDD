@@ -1,3 +1,4 @@
+using Define.DesignPatterns;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,5 +42,10 @@ public class PartyController : MonoBehaviour
     {
         if (Input.GetKey(forwardKey)) transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
         if (Input.GetKey(backwardKey)) transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.GetInstance.Setcharactors();
+        }
     }
 }

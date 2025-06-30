@@ -10,18 +10,18 @@ namespace Define
 {
 	namespace DesignPatterns
 	{
-		public class SingleTon<T> where T : new()
+		public class SingleTon<T> where T : SingleTon<T>,new()
         {
-			private T instance;
+			protected static T instance;
 
-			public T GetInstance
+			public static T GetInstance
 			{
 				get 
 				{
 					if (instance == null)
                     {
-                        Init();
                         instance = new T();
+                        instance.Init();
                     }
 					return instance;
 				}
@@ -48,7 +48,7 @@ namespace Define
     }
 	namespace Data
 	{
-		public class Charactors
+		public class Charactor
 		{
             public string name;
             private string dataName;//datapool에서 필요한 이름
@@ -58,7 +58,7 @@ namespace Define
 			public sbyte skillPoints;//
 			public sbyte ad;//attackDamage
 			public sbyte ap;//abilityPower
-			public Charactors(string name, string dataName, sbyte hp, sbyte mana, sbyte skillPoints, sbyte ad, sbyte ap)
+			public Charactor(string name, string dataName, sbyte hp, sbyte mana, sbyte skillPoints, sbyte ad, sbyte ap)
             {
                 this.name = name;
                 this.dataName = dataName;
